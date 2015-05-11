@@ -9,7 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+  
 @end
 
 @implementation ViewController
@@ -23,5 +23,24 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    // タッチをどれか一つ取り出す。
+    // anyObjectはNSSetのメソッド。　適当に一つ返してくれる。
+    UITouch *t = [touches anyObject];
+    
+    // 画面上の座標を取得
+    CGPoint point = [t locationInView:self.view];
+    
+    // タッチされたところにView
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 15)];
+    view.center = point;
+    view.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:view];
+    
+}
+
+
 
 @end
